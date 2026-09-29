@@ -9,24 +9,24 @@
 - [x] [S0.6] Repo skeleton
 
 ## Phase 1: Backend foundation (TypeScript + Express)
-- [ ] [S1.1] TypeScript project init
-- [ ] [S1.2] TS basics practice
-- [ ] [S1.3] Express hello + env config (Zod)
-- [ ] [S1.4] Middleware deep-dive
+- [x] [S1.1] TypeScript project init
+- [x] [S1.2] TS basics practice
+- [x] [S1.3] Express hello + env config (Zod)
+- [x] [S1.4] Middleware deep-dive
 
 ## Phase 2: Database + Redis
-- [ ] [S2.1] docker-compose (pgvector + redis)
-- [ ] [S2.2] SQL basics + schema
-- [ ] [S2.3] pg pool
-- [ ] [S2.4] Redis client
-- [ ] [S2.5] Graceful shutdown
+- [x] [S2.1] docker-compose (pgvector + redis)
+- [x] [S2.2] SQL basics + schema
+- [x] [S2.3] pg pool
+- [ ] [S2.4] Redis client (Phase 3 me streaming ke saath)
+- [x] [S2.5] Graceful shutdown
 
 ## Phase 3: Authentication + Authorization
-- [ ] [S3.1] Zod validation middleware
-- [ ] [S3.2] Register
-- [ ] [S3.3] Login + JWT
-- [ ] [S3.4] Authenticate middleware
-- [ ] [S3.5] Authorization: roles + ownership
+- [x] [S3.1] Zod validation middleware
+- [x] [S3.2] Register
+- [x] [S3.3] Login + JWT
+- [x] [S3.4] Authenticate middleware
+- [x] [S3.5] Authorization: roles + ownership
 
 ## Phase 4: Security + Redis features
 - [ ] [S4.1] helmet + cors + body limit
