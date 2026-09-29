@@ -34,19 +34,19 @@
 - [ ] [S4.3] Cache helper
 
 ## Phase 5: Documents + RAG ingestion
-- [ ] [S5.1] RAG concept
-- [ ] [S5.2] Upload endpoint
-- [ ] [S5.3] Chunker
-- [ ] [S5.4] Embeddings service (Gemini)
-- [ ] [S5.5] Store + list + delete
+- [x] [S5.1] RAG concept
+- [x] [S5.2] Upload endpoint
+- [x] [S5.3] Chunker
+- [x] [S5.4] Embeddings service (Gemini)
+- [x] [S5.5] Store + list + delete
 - [ ] [S5.6] PDF support
 
 ## Phase 6: RAG chat
-- [ ] [S6.1] Similarity search
-- [ ] [S6.2] LLM client (Groq)
-- [ ] [S6.3] Prompt + /api/chat
-- [ ] [S6.4] Cache lagao
-- [ ] [S6.5] Streaming (SSE)
+- [x] [S6.1] Similarity search
+- [x] [S6.2] LLM client (Groq)
+- [x] [S6.3] Prompt + /api/chat
+- [ ] [S6.4] Cache lagao (Phase 3 me Redis ke sath)
+- [ ] [S6.5] Streaming (SSE) (Phase 3 me)
 
 ## Phase 7: Mini agent
 - [ ] [S7.1] Agent concept

@@ -6,6 +6,8 @@ import { notFound } from './middleware/notFound';
 import { errorHandler } from './middleware/errorHandler';
 import { authRoutes } from './modules/auth/auth.routes';
 import { adminRoutes } from './modules/admin/admin.routes';
+import { documentRoutes } from './modules/documents/documents.routes';
+import { chatRoutes } from './modules/chat/chat.routes';
 
 // Factory function to create and configure the Express application
 // WHY: Decoupling app creation from server.listen allows clean, isolated integration testing with supertest.
@@ -33,6 +35,8 @@ export function createApp(): Application {
   // API Routes
   app.use('/api/auth', authRoutes);
   app.use('/api/admin', adminRoutes);
+  app.use('/api/documents', documentRoutes);
+  app.use('/api/chat', chatRoutes);
 
   // Fallback 404 handler for undefined routes
   app.use(notFound);
