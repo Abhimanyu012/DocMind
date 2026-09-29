@@ -6,7 +6,7 @@
 - [x] [S0.3] Node via nvm
 - [x] [S0.4] Docker
 - [ ] [S0.5] Keys (Gemini & Groq - Phase 5/6 ke liye)
-- [ ] [S0.6] Repo skeleton
+- [x] [S0.6] Repo skeleton
 
 ## Phase 1: Backend foundation (TypeScript + Express)
 - [ ] [S1.1] TypeScript project init
