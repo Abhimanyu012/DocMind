@@ -16,6 +16,8 @@ const envSchema = z.object({
   CORS_ORIGIN: z.string().default('http://localhost:5173'),
   GEMINI_API_KEY: z.string().optional().default(''),
   GROQ_API_KEY: z.string().optional().default(''),
+  UPSTASH_REDIS_REST_URL: z.string().optional().default(''),
+  UPSTASH_REDIS_REST_TOKEN: z.string().optional().default(''),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);

@@ -18,7 +18,7 @@
 - [x] [S2.1] docker-compose (pgvector + redis)
 - [x] [S2.2] SQL basics + schema
 - [x] [S2.3] pg pool
-- [ ] [S2.4] Redis client (Phase 3 me streaming ke saath)
+- [x] [S2.4] Redis client
 - [x] [S2.5] Graceful shutdown
 
 ## Phase 3: Authentication + Authorization
@@ -29,9 +29,9 @@
 - [x] [S3.5] Authorization: roles + ownership
 
 ## Phase 4: Security + Redis features
-- [ ] [S4.1] helmet + cors + body limit
-- [ ] [S4.2] Redis rate limiter
-- [ ] [S4.3] Cache helper
+- [x] [S4.1] helmet + cors + body limit
+- [x] [S4.2] Redis rate limiter
+- [x] [S4.3] Cache helper
 
 ## Phase 5: Documents + RAG ingestion
 - [x] [S5.1] RAG concept
@@ -45,8 +45,8 @@
 - [x] [S6.1] Similarity search
 - [x] [S6.2] LLM client (Groq)
 - [x] [S6.3] Prompt + /api/chat
-- [ ] [S6.4] Cache lagao (Phase 3 me Redis ke sath)
-- [ ] [S6.5] Streaming (SSE) (Phase 3 me)
+- [x] [S6.4] Cache lagao
+- [x] [S6.5] Streaming (SSE)
 
 ## Phase 7: Mini agent
 - [ ] [S7.1] Agent concept

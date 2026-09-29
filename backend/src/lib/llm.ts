@@ -1,3 +1,4 @@
+import https from 'https';
 import { env } from '../config/env';
 
 // OFFICIAL DOCUMENTATION REFERENCE:
@@ -56,4 +57,99 @@ export async function generateChatCompletion(messages: ChatMessage[]): Promise<s
   }
 
   return data.choices[0].message.content;
+}
+
+/**
+ * Streams chat completion tokens in real-time using native Node.js https streaming for maximum stability.
+ */
+export async function streamChatCompletion(
+  messages: ChatMessage[],
+  onToken: (token: string) => void
+): Promise<string> {
+  const apiKey = env.GROQ_API_KEY;
+
+  if (!apiKey || apiKey.trim() === '') {
+    const simulatedAnswer = 'DocMind Streaming Demo Mode: Verified answer streamed token by token.';
+    const words = simulatedAnswer.split(' ');
+    for (const word of words) {
+      onToken(word + ' ');
+      await new Promise((r) => setTimeout(r, 40));
+    }
+    return simulatedAnswer;
+  }
+
+  return new Promise<string>((resolve, reject) => {
+    const postData = JSON.stringify({
+      model: 'openai/gpt-oss-120b',
+      messages,
+      temperature: 0.2,
+      stream: true,
+    });
+
+    const req = https.request(
+      'https://api.groq.com/openai/v1/chat/completions',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Length': Buffer.byteLength(postData),
+        },
+      },
+      (res) => {
+        if (res.statusCode && res.statusCode >= 400) {
+          let errBody = '';
+          res.on('data', (c) => (errBody += c));
+          res.on('end', () => reject(new Error(`Groq error (${res.statusCode}): ${errBody}`)));
+          return;
+        }
+
+        let buffer = '';
+        let fullAnswer = '';
+
+        res.on('data', (chunk: Buffer) => {
+          buffer += chunk.toString('utf-8');
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || '';
+
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed || trimmed.startsWith(':')) continue;
+            if (trimmed === 'data: [DONE]') {
+              resolve(fullAnswer);
+              return;
+            }
+
+            if (trimmed.startsWith('data: ')) {
+              try {
+                const json = JSON.parse(trimmed.slice(6));
+                const delta = json.choices?.[0]?.delta?.content;
+                if (delta) {
+                  fullAnswer += delta;
+                  onToken(delta);
+                }
+              } catch {
+                // ignore unparsed fragments
+              }
+            }
+          }
+        });
+
+        res.on('end', () => {
+          resolve(fullAnswer);
+        });
+
+        res.on('error', (err) => {
+          reject(err);
+        });
+      }
+    );
+
+    req.on('error', (err) => {
+      reject(err);
+    });
+
+    req.write(postData);
+    req.end();
+  });
 }
